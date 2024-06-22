@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>My Map</title>
+</head>
+<body>
+    <h1>My Map</h1>
+    <div id="map" style="width: 100%; height: 500px;"></div>
+    <script>
+        function initMap() {
+            var location = {
+                lat: 29.436408888206252, 
+                lng: 76.95466795007029
+            };
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+
+            marker.addListener("click", function() {
+                var infoWindow = new google.maps.InfoWindow({
+                    content: "<h1>Wife's Home</h1>"
+                });
+                infoWindow.open(map, marker);
+            });
+        }
+        </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfh15zeZumVt-73-Q2fRv59PqqTId3EO0&callback=initMap"></script>
+</body>
+
+</html>
